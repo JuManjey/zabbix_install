@@ -1,0 +1,11 @@
+wget https://www.openssl.org/source/openssl-1.1.1s.tar.gz;
+tar xvf openssl-1.1.1s.tar.gz;
+cd openssl-1.1.1s/;
+./Configure --prefix=/opt/build --openssldir=/opt/build -fPIC -shared linux-x86_64;
+make -j 8 && make install;
+cd ../;
+
+# Set pkgconfig and also set ENV for default openssl.cnf path
+
+export PKG_CONFIG_PATH=/opt/build/lib/pkgconfig
+export OPENSSL_CONF=/usr/lib/ssl/openssl.cnf;
